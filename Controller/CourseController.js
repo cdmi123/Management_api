@@ -36,8 +36,7 @@ exports.View_Course = async (req,res) => {
         var start = (page_no-1)*limit;
 
         var data = await coursemodel.find().skip(start).limit(limit);
-
-    
+        
         var total_record = await coursemodel.find().count();
         var totalpage = Math.ceil(total_record/5)
         res.status(200).json({
