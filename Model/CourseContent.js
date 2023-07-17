@@ -17,10 +17,9 @@ var coursecontentschema = new mongoose.Schema({
     course_id:{
         required:[true,"couser name require"],
         type: mongoose.Schema.Types.ObjectId,
-        ref: "courses",
+        ref: "course",
     },
     course_duration:{
-       
         type:String,
     }
 })

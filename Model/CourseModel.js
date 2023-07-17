@@ -14,6 +14,10 @@ var courseschema = new mongoose.Schema({
             }
         }
     },
+    content_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "course_content",
+    },
 })
 
 var courseModel = mongoose.model('course',courseschema);
