@@ -9,7 +9,7 @@ var debug = require('debug')('management-api:server');
 var http = require('http');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/management_api')
+mongoose.connect('mongodb+srv://Product:cdmi123@cluster0.rsmma9e.mongodb.net/management_api')
   .then(() => console.log('Connected!'));
 
 /**
