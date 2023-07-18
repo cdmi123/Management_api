@@ -138,8 +138,6 @@ exports.updat_course = async (req,res) => {
 
 exports.Add_Course_content = async (req,res) => {
 
-
-
         var content_data = await course_contentModel.find({"course_id":req.body.course_id});
         
         if(content_data.length == 0)

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const { default: mongoose } = require('mongoose');
+var validator = require('validator');
 
 const Admissionschema = new mongoose.Schema({
 
@@ -110,15 +111,13 @@ const Admissionschema = new mongoose.Schema({
             }
         }
     }, 
+
     course:{
-        type:String,
-        required:[true,"select course"],
-        validate(value){
-            if(validator.isEmpty(value)){
-                throw new Error("select course");
-            }
-        }
+        required:[true,"couser name require"],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "course_content",
     }, 
+
     course_duration:{
         type:String,
         required:[true,"select course duration"],
@@ -128,6 +127,7 @@ const Admissionschema = new mongoose.Schema({
             }
         }
     }, 
+
     daily_time:{
         type:String,
         required:[true,"select daily time"],
@@ -138,13 +138,9 @@ const Admissionschema = new mongoose.Schema({
         }
     }, 
     course_content:{
-        type:String,
-        required:[true,"enter course content"],
-        validate(value){
-            if(validator.isEmpty(value)){
-                throw new Error("enter course content");
-            }
-        }
+        required:[true,"couser name require"],
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "course_content",
     }, 
     total_fees:{
         type:String,
@@ -194,13 +190,19 @@ const Admissionschema = new mongoose.Schema({
     },
 
     installment_details:{
-        type:String,
-        required:[true,"enter installment details"],
-        validate(value){
-            if(validator.isEmpty(value)){
-                throw new Error("enter installment details");
+        type:Array,
+        Details:{
+
+            amount:{
+                type:Number
+            },
+            installment_date:{
+                type:Date
+            },
+            p_status:{
+                type:String,default:"0"
             }
-        }
+        },
     },
     faculty:{
         type:String,
@@ -233,7 +235,7 @@ const Admissionschema = new mongoose.Schema({
         type:String,default:"PC"
     },
     pc_no:{
-        type:String,default:0
+        type:String,default:"0"
     },
     laptop_compulsory:{
         type:String,default:"NO"
